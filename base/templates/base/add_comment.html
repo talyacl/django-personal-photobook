@@ -1,0 +1,9 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<h2>Add Comment</h2>
+<form method="post" action="{% url 'add_comment' post_id=post.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

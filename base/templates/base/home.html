@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="photo-grid">
+            {% for photo in photos %}
+            <div class="photo-card">
+                <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" class="uploaded-photo">
+            </div>
+            {% empty %}
+            <div class="col-md-12">
+                <p>No photos available.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <style>
+        /* Custom CSS for photo cards */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid layout */
+            gap: 20px; /* Adjust the gap between cards */
+            justify-content: space-around; /* Center align cards */
+            margin-top: 50px;
+        }
+
+        .photo-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .photo-card img {
+            width: 100%; /* Ensure all images fill their containers */
+            height: 100%; /* Maintain aspect ratio */
+            object-fit: cover; /* Preserve aspect ratio while covering container */
+            border-radius: 5px;
+        }
+    </style>
+{% endblock %}
+
